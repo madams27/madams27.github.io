@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Digital Mapping Project</title>
+  <base href="https://madams27.github.io/ganonprofits/">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"> </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"> </script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script>
+$(document).ready(function (){
+  $( "#search" ).autocomplete({
+      minLength: 1,
+      source: function(request,response){
+        var suggestions = [];
+        $(nonProfits).each(function(i, el){
+          if (el.name.toLowerCase().includes(request.term.toLowerCase()) || el.address.toLowerCase().includes(request.term.toLowerCase())){
+            suggestions.push({label: el.name, value: el});
+          }
+        });
+        response(suggestions);
+      },
+      select: function( event, ui ) {
+        $( "#search" ).val( ui.item.label );
+        ui.item.value.marker.openPopup();
+        return false;
+      }
+    });
+});
+</script>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="stylesheet" href="styles.1447fae91839e088a398.css"></head>
+<body>
+  <app-root></app-root>
+<script type="text/javascript" src="runtime.3ffcf325846f1dde49dd.js"></script><script type="text/javascript" src="polyfills.6394abab1773c74d40a8.js"></script><script type="text/javascript" src="scripts.fd0c6b2aa5d650166e9c.js"></script><script type="text/javascript" src="main.d1cc8828c144ec621ac1.js"></script></body>
+</html>
+<script src = "/src/scripts/add_content.js"></script>
+<script src = "/src/scripts/grabber.js"></script>
+<script src = "/src/scripts/parser.js"></script>
